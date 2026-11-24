@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; frame-src 'self' blob:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<title>MediLog Zentral AG · Incident-Portal</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23005EB8'/%3E%3Cpath d='M13 7h6v6h6v6h-6v6h-6v-6H7v-6h6z' fill='white'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<!-- LOGIN -->
+<section id="login" class="screen">
+  <div class="login-brand">
+    <div class="brand-plus" aria-hidden="true"></div>
+    <div class="brand-inner">
+      <div class="logo-mark big" aria-hidden="true"></div>
+      <h1>MediLog Zentral AG</h1>
+      <p>Pharma-Grosshandel</p>
+    </div>
+  </div>
+  <div class="login-form-wrap">
+    <form id="loginForm" class="login-form" autocomplete="off">
+      <div class="lf-head"><h2>Incident-Portal</h2><p class="muted">Zugang für das externe Beraterteam zum Ausfall vom 13. Oktober.</p></div>
+      <label>Teamname<input id="teamName" maxlength="24" placeholder="Team Rigi" required></label>
+      <label>Passwort<input id="teamPw" type="password" placeholder="••••••••" required></label>
+      <div id="loginErr" class="err" role="alert"></div>
+      <button class="btn primary wide" type="submit">Anmelden <span class="arrow">→</span></button>
+    </form>
+  </div>
+</section>
+
+<!-- APP -->
+<section id="app" class="screen hidden">
+  <header class="topbar">
+    <div class="tb-left"><div class="logo-mark" id="logoMark" title="MediLog"></div><b>MediLog Zentral AG</b><span class="tb-sub">Incident-Portal</span></div>
+    <div class="tb-right">
+      <div class="timer" id="timer"><svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15" class="tr-bg"/><circle cx="18" cy="18" r="15" class="tr-fg" id="timerRing"/></svg><span>GL-Sitzung in <b id="timerTxt">40:00</b></span></div>
+      <div class="team-chip" id="teamChip">Team</div>
+    </div>
+  </header>
+  <div class="layout">
+    <nav class="sidebar">
+      <a data-view="overview" class="on"><i class="ic ic-home"></i>Übersicht</a>
+      <a data-view="inbox"><i class="ic ic-mail"></i>Posteingang<span class="badge" id="mailBadge"></span></a>
+      <a data-view="docs"><i class="ic ic-folder"></i>Dokumente<span class="badge" id="docBadge"></span></a>
+      <a data-view="downloads"><i class="ic ic-down"></i>Downloads</a>
+      <a data-view="decision" id="navDecision" class="locked"><i class="ic ic-check"></i>Entscheid</a>
+      <div class="side-foot">
+        <div class="progress-mini"><span id="progTxt">Schritt 1 von 5</span><div class="bar"><i id="progBar"></i></div></div>
+        <button class="btn ghost wide" id="joinBtn">Sitzung beitreten</button>
+      </div>
+    </nav>
+    <main id="main">
+      <!-- views -->
+      <div class="view" id="v-overview"></div>
+      <div class="view hidden" id="v-inbox"></div>
+      <div class="view hidden" id="v-docs"></div>
+      <div class="view hidden" id="v-downloads"></div>
+      <div class="view hidden" id="v-decision"></div>
+    </main>
+  </div>
+</section>
+
+<!-- DOSSIER -->
+<section id="dossier" class="screen hidden"></section>
+
+<!-- overlays -->
+<div id="toastWrap" aria-live="polite"></div>
+<div id="viewer" class="overlay hidden" role="dialog" aria-modal="true">
+  <div class="vw">
+    <div class="vw-bar"><button class="vw-btn hidden" id="vwBack">‹ Zurück zur Mail</button><b id="vwTitle"></b><div class="vw-act"><a id="vwTab" class="vw-btn hidden" target="_blank" rel="noopener">In neuem Tab ↗</a><button class="vw-x" id="vwClose" aria-label="Schliessen">×</button></div></div>
+    <div class="vw-body" id="vwBody"></div>
+    <div class="vw-rel hidden" id="vwRel"></div>
+  </div>
+</div>
+<div id="timeUp" class="overlay hidden" role="dialog" aria-modal="true">
+  <div class="modal">
+    <div class="modal-icon"><i class="ic ic-clock"></i></div>
+    <h3>Die GL-Sitzung beginnt</h3>
+    <p class="muted">Die Geschäftsleitung ist versammelt und wartet auf eure Empfehlung.</p>
+    <div class="modal-actions"><button class="btn ghost" id="keepGoing">Weiter lösen</button><button class="btn primary" id="joinNow">Sitzung beitreten</button></div>
+  </div>
+</div>
+<div id="admin" class="overlay hidden" role="dialog" aria-modal="true">
+  <div class="modal">
+    <h3>Spielleitung</h3>
+    <div id="adminLock"><input id="adminPw" type="password" placeholder="Leitungscode"><button class="btn primary" id="adminGo">Öffnen</button><div class="err" id="adminErr"></div></div>
+    <div id="adminPanel" class="hidden">
+      <p class="muted" id="adminState"></p>
+      <div class="modal-actions col"><button class="btn ghost" id="adminSkip">Aktuellen Schritt freischalten</button><button class="btn ghost" id="adminBonus">Bonus freischalten</button><button class="btn ghost" id="adminTime">+5 Minuten</button><button class="btn danger" id="adminReset">Team zurücksetzen</button></div>
+    </div>
+    <button class="btn ghost wide" id="adminClose">Schliessen</button>
+  </div>
+</div>
+
+<script src="assets/js/vault.js"></script>
+<script src="assets/js/levels.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
