@@ -250,12 +250,12 @@
           ${num('h2', 'Verlorene Bestellungen im Vergleich zum Case', '%', '10')}
           ${num('r1', 'Verfügbarkeit, eure Konfiguration', '%', '0.01')}
           ${num('r2', 'Summe über fünf Jahre, eure Konfiguration', 'CHF', '1')}
-          ${num('s0', 'Summe über fünf Jahre, Ist-Zustand (Zeile S0)', 'CHF', '1')}</section>
-        <section class="card dc"><div class="dc-no">3</div><h3>Zusage und Erkenntnisse</h3><p class="muted">Was sagt ihr dem Spital zu?</p>
+          ${num('s0', 'Summe über fünf Jahre, Zeile «S0 Ist-Zustand»', 'CHF', '1')}</section>
+        <section class="card dc"><div class="dc-no">3</div><h3>Zusage und Erkenntnisse</h3><p class="muted">Das Spital verlangt ab 2027 RTO ≤ 4 h und keinen Datenverlust. Was könnt ihr mit euren Massnahmen zusagen?</p>
           <div class="pills col">${opt('spital', ['RTO 4 h und kein Datenverlust', 'RTO 4 h, Datenverlust erst nach Klärung', 'Noch keine Zusage'])}</div>
-          <div class="field"><label>Grösster Hebel (Komponente)</label>${sel('e1', G.components)}</div>
-          <div class="field"><label>Bringt pro Franken am meisten</label>${sel('e2', G.measures)}</div>
-          <div class="field"><label>Lässt sich nicht in Franken ausdrücken</label><input name="e3" maxlength="60" value="${esc(d.e3 || '')}" placeholder="Stichwort"></div></section>
+          <div class="field"><label>Welche Komponente verursacht pro Jahr am meisten Ausfallstunden?</label>${sel('e1', G.components)}</div>
+          <div class="field"><label>Welche Massnahme senkt den Ausfall pro Franken am stärksten?</label>${sel('e2', G.measures)}</div>
+          <div class="field"><label>Was ist wichtig, lässt sich aber nicht in Franken rechnen?</label><input name="e3" maxlength="60" value="${esc(d.e3 || '')}" placeholder="Ein Stichwort"></div></section>
       </div>
       <div class="dec-actions"><div class="err" id="decErr"></div><button class="btn primary" type="submit">GL-Dossier erstellen <span class="arrow">→</span></button></div>
     </form>`;
