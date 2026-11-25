@@ -62,8 +62,8 @@ window.GAME = {
   ],
   bonus: {
     key: 'bonus', title: 'Bonus: Die Rechnung der CFO',
-    lead: 'Die CFO spricht von «alle paar Jahre einmal». Wie viele Störungen hatte die Kette pro Jahr wirklich?',
-    fields: [{ key: 'bonus', label: 'Störungen pro Jahr', unit: '', step: '0.01', norm: 'fix12' }]
+    lead: 'Die CFO sagt, so ein Ausfall komme «alle paar Jahre einmal» vor. Wie viele Kalendertage liegen im Schnitt zwischen zwei Störungen der Kette?',
+    fields: [{ key: 'bonus', label: 'Tage (eine Nachkommastelle)', unit: '', step: '0.1', norm: 'fix12' }]
   },
   measures: ['Zweite Internetleitung', 'WLAN doppelt', 'USV und Notstrom', 'ERP-Cluster', 'Zweitstandort Rotkreuz', 'Notfallprozess', 'Hosting ERP, DB und WMS'],
   components: ['Internetleitung', 'Firewall', 'ERP-Server', 'ERP-Datenbank', 'WMS', 'Lager-WLAN', 'Stromversorgung']

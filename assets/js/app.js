@@ -118,7 +118,7 @@
     if (S.decision) main = `<article class="card task"><h2>Alles erledigt</h2><p class="lead">Ihr könnt die Sitzung jetzt betreten.</p><button class="btn primary" id="toDossier">Sitzung beitreten <span class="arrow">→</span></button></article>`;
     else main = taskCard(st, S.step + 1);
     let bonus = '';
-    if (S.bonus) bonus = `<article class="card bonus solved"><h3>Bonus gelöst</h3><p class="lead">Rund 12 Störungen pro Jahr, nicht «alle paar Jahre einmal».</p></article>`;
+    if (S.bonus) bonus = `<article class="card bonus solved"><h3>Bonus gelöst</h3><p class="lead">Etwa alle 30 Tage eine Störung, also rund einmal pro Monat, nicht «alle paar Jahre einmal».</p></article>`;
     else if (S.bonusOpen) bonus = `<article class="card bonus"><div class="task-head"><span class="step-no">Bonus</span></div><h3>${esc(G.bonus.title)}</h3><p class="lead">${esc(G.bonus.lead)}</p><form class="code-form" data-key="bonus" data-norm="fix12">${G.bonus.fields.map(fieldHTML).join('')}<button class="btn ghost" type="submit">Prüfen</button></form><div class="err" id="bonusErr"></div></article>`;
     const recent = S.mails.slice().reverse().slice(0, 4).map(mailRow).join('');
     $('#v-overview').innerHTML = `${greeting}${track}<div class="ov-grid"><div>${main}${bonus}</div><aside class="card inbox-mini"><div class="mini-head"><h3>Posteingang</h3><a class="link" data-go="inbox">Alle</a></div>${recent}</aside></div>`;
