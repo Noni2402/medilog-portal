@@ -54,7 +54,7 @@ window.GAME = {
     {
       id: 's5', title: 'Entscheid für die GL', sheet: 'Massnahmen',
       lead: 'Welche Massnahmen empfehlt ihr der Geschäftsleitung?',
-      how: ['Blatt «Massnahmen» öffnen. Es ist mit einem Passwort geschützt.', 'Massnahmen auf Ja oder Nein stellen.', 'Eure zwei Annahmen setzen: Kundenverlust pro Jahr und verlorene Bestellungen.', 'Ergebnis mit den Szenarien vergleichen und unter «Entscheid» erfassen.'],
+      how: ['Blatt «Massnahmen» öffnen. Es ist mit einem Passwort geschützt.', 'Massnahmen auf Ja oder Nein stellen.', 'Eure zwei Annahmen setzen: Kundenverlust pro Jahr und verlorene Bestellungen.', 'Spielt mit euren Annahmen: Setzt den Kundenverlust einmal auf 0, einmal auf den Oktober-Wert und einmal deutlich höher. Rechts im Blatt seht ihr, ob das günstigste Szenario wechselt.', 'Ergebnis mit den Szenarien vergleichen und unter «Entscheid» erfassen.'],
       formulas: ['Kundenverlust in CHF Marge pro Jahr: Welche Kunden hat der Oktober-Ausfall gekostet?', '100 % verlorene Bestellungen = Werte aus dem Case, 200 % = doppelt so viele', 'Summe über fünf Jahre = einmalig + 5 × (laufend + Schaden)'],
       todo: [{ t: 'Mail der CFO lesen', mail: 'm6' }, { t: 'Mail von Patrick Gisler lesen', mail: 'm5' }, { t: 'Entscheid erfassen', go: 'decision' }],
       decision: true
