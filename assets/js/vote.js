@@ -37,7 +37,7 @@
         return `<button class="vt-card ${ours ? 'ours' : ''} ${v ? 'has' : ''}" data-n="${esc(n)}" style="--d:${i * 40}ms">
           <span class="vt-name">${esc(n)}${ours ? '<i class="vt-tag">unsere Wahl</i>' : ''}</span>
           <span class="vt-bar"><i style="width:${v / max * 100}%"></i></span>
-          <span class="vt-num">${v}</span><span class="vt-minus" data-minus="${esc(n)}" title="−1">−</span></button>`;
+          <span class="vt-num">${v}</span></button>`;
       }).join('')}</div>`;
     } else {
       const list = S.texts[st.id] || [];
@@ -52,10 +52,9 @@
   }
   function bind(st) {
     document.querySelectorAll('.vt-card').forEach(b => {
-      b.addEventListener('click', e => { if (e.target.dataset.minus) return; bump(st.id, b.dataset.n, 1); });
+      b.addEventListener('click', () => bump(st.id, b.dataset.n, 1));
       b.addEventListener('contextmenu', e => { e.preventDefault(); bump(st.id, b.dataset.n, -1); });
     });
-    document.querySelectorAll('[data-minus]').forEach(m => m.addEventListener('click', e => { e.stopPropagation(); bump(st.id, m.dataset.minus, -1); }));
     $('#vtAdd')?.addEventListener('submit', e => {
       e.preventDefault(); const v = $('#vtIn').value.trim(); if (!v) return;
       (S.texts[st.id] = S.texts[st.id] || []).push(v); save(); render(); $('#vtIn').focus();
