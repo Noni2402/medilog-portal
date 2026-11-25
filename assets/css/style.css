@@ -244,10 +244,6 @@ blockquote{margin:20px 0 0;padding:16px 20px;background:var(--bg);border-radius:
 @media print{.dos-band{-webkit-print-color-adjust:exact;print-color-adjust:exact}.dos-actions{display:none}.dos section,.dos-head{animation:none}}
 
 /* pulsierendes Logo-Plus im Hintergrund */
-.brand-plus{position:absolute;right:5%;top:64%;width:44vh;height:44vh;transform:translateY(-50%);opacity:.07;animation:plusPulse 6s ease-in-out infinite;pointer-events:none}
-.brand-plus:before,.brand-plus:after{content:"";position:absolute;background:#fff;border-radius:3vh}
-.brand-plus:before{left:34%;top:0;width:32%;height:100%}
-.brand-plus:after{top:34%;left:0;height:32%;width:100%}
 @keyframes plusPulse{0%,100%{opacity:.05;transform:translateY(-50%) scale(1)}50%{opacity:.09;transform:translateY(-50%) scale(1.04)}}
 
 /* Aktionen im Auftrag */
@@ -445,3 +441,19 @@ blockquote{margin:20px 0 0;padding:16px 20px;background:var(--bg);border-radius:
 @keyframes dPlus{0%,100%{transform:rotate(0) scale(1);opacity:.9}50%{transform:rotate(45deg) scale(1.12);opacity:.55}}
 @media (prefers-reduced-motion:reduce){.d-circle,.d-dots,.d-plus{animation:none}}
 .vt-top{background:rgba(255,255,255,.92);backdrop-filter:saturate(1.4) blur(10px)}
+
+/* Login: Deko wie Folie «40 Minuten» */
+.lb-deco{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.lb-circle{position:absolute;border-radius:50%}
+.lb-circle.c1{width:58vh;height:58vh;right:-16vh;top:-20vh;background:rgba(255,255,255,.10);animation:dFloat 18s ease-in-out infinite}
+.lb-circle.c2{width:40vh;height:40vh;left:-14vh;bottom:-16vh;background:rgba(0,40,90,.28);animation:dFloat 22s ease-in-out infinite reverse}
+.lb-dots{position:absolute;width:64px;height:30px;background-image:radial-gradient(circle,#fff 2.4px,transparent 2.6px);background-size:16px 16px;opacity:.85;animation:dDrift 14s ease-in-out infinite}
+.lb-dots.t1{left:8%;bottom:9vh}
+.lb-dots.t2{right:9%;top:12vh;opacity:.5;animation-delay:-6s}
+.lb-plus{position:absolute;width:24px;height:24px;animation:dPlus 9s ease-in-out infinite}
+.lb-plus:before,.lb-plus:after{content:"";position:absolute;background:#9CC3EA;border-radius:3px;left:50%;top:50%;transform:translate(-50%,-50%)}
+.lb-plus:before{width:100%;height:34%}.lb-plus:after{width:34%;height:100%}
+.lb-plus.p1{right:14%;top:30vh}
+.lb-plus.p2{left:44%;bottom:8vh;width:20px;height:20px;animation-delay:-3s}
+.lb-plus.p3{left:7%;top:14vh;width:16px;height:16px;animation-delay:-6s}
+@media (prefers-reduced-motion:reduce){.lb-circle,.lb-dots,.lb-plus{animation:none}}

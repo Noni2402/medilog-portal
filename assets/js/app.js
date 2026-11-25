@@ -390,6 +390,7 @@
     if (adminKey) { $('#adminLock').classList.add('hidden'); $('#adminPanel').classList.remove('hidden'); $('#adminState').textContent = `Team ${S.team} · Schritt ${Math.min(S.step + 1, 5)}${S.bonusOpen ? ' · Bonus offen' : ''}`; }
     else $('#adminErr').textContent = 'Falscher Code.';
   });
+  $('#adminPw').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); $('#adminGo').click(); } });
   $('#adminSkip').addEventListener('click', () => {
     const key = ((G.steps[S.step] || {}).fields || [])[0]?.key;
     closeOverlay('#admin'); if (!S.showDossier) go('overview');
